@@ -3,6 +3,7 @@ package org.iesvdm.jsp_servlet_jdbc.servlet;
 import jakarta.servlet.http.HttpServletRequest;
 import org.iesvdm.jsp_servlet_jdbc.model.Socio;
 
+import javax.swing.text.html.Option;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -26,7 +27,8 @@ public class UtilServlet {
             //UTILIZO isBlank SOBRE EL PARÁMETRO DE TIPO String PARA CHEQUEAR QUE NO ES UN PARÁMETRO VACÍO "" NI CADENA TODO BLANCOS "    "
             //          |                                EN EL CASO DE QUE SEA BLANCO LO RECIBIDO, LANZO UNA EXCEPCIÓN PARA INVALIDAR EL PROCESO DE VALIDACIÓN
             //          -------------------------v                      v---------------------------------------|
-            if (request.getParameter("nombre").isBlank()) throw new RuntimeException("Parámetro vacío o todo espacios blancos.");
+            if (request.getParameter("nombre").isBlank())
+                throw new RuntimeException("Parámetro vacío o todo espacios blancos.");
             nombre = request.getParameter("nombre");
 
 
@@ -41,7 +43,8 @@ public class UtilServlet {
             //UTILIZO isBlank SOBRE EL PARÁMETRO DE TIPO String PARA CHEQUEAR QUE NO ES UN PARÁMETRO VACÍO "" NI CADENA TODO BLANCOS "    "
             //          |                                EN EL CASO DE QUE SEA BLANCO LO RECIBIDO, LANZO UNA EXCEPCIÓN PARA INVALIDAR EL PROCESO DE VALIDACIÓN
             //          -------------------------v                      v---------------------------------------|
-            if (request.getParameter("localidad").isBlank()) throw new RuntimeException("Parámetro vacío o todo espacios blancos.");
+            if (request.getParameter("localidad").isBlank())
+                throw new RuntimeException("Parámetro vacío o todo espacios blancos.");
             localidad = request.getParameter("localidad");
 
             return Optional.of(new Socio(-1, nombre, estatura, edad, localidad));
@@ -53,4 +56,5 @@ public class UtilServlet {
         return Optional.empty();
 
     }
+
 }
