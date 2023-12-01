@@ -1,36 +1,69 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: guillermorodriguez
-  Date: 29/11/23
-  Time: 10:07
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="org.iesvdm.jsp_servlet_jdbc.model.Socio" %>
+<%@ page import="org.iesvdm.jsp_servlet_jdbc.dao.SocioDAOImpl" %>
+<%@ page import="org.iesvdm.jsp_servlet_jdbc.dao.SocioDAO" %>
+<%@ page import="java.util.Optional" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="estilos.css" />
 </head>
-<body>
-    <h2>Introduzca los datos del socio a editar:</h2>
+<body class="bg-light">
+<div class="container bg-white">
+    <div class="row border-bottom">
+        <div class="col-12 h2">Introduzca los datos del Socio a editar</div>
+    </div>
+</div>
+<div class="container bg-light">
     <form method="post" action="EditarSociosServlet">
-
-        Nombre <input type="text" name="nombre"/></br>
-        Estatura <input type="text" name="estatura"/></br>
-        Edad <input type="text" name="edad"/></br>
-        Localidad <input type="text" name="localidad"/></br>
-        <input type="submit" value="Aceptar">
-
+        <div class="row body mt-2">
+            <div class="col-md-6 align-self-center">Editando Socio con ID: </div>
+        </div>
+        <div class="row body mt-2">
+            <div class="col-md-6 align-self-center">Nuevo Nombre</div>
+            <div class="col-md-6 align-self-center"><input type="text" name="nombre"/></div>
+        </div>
+        <div class="row body mt-2">
+            <div class="col-md-6 align-self-center">Nueva Estatura</div>
+            <div class="col-md-6 align-self-center"><input type="text" name="estatura"/></div>
+        </div>
+        <div class="row body mt-2">
+            <div class="col-md-6 align-self-center">Nueva Edad</div>
+            <div class="col-md-6 align-self-center"><input type="text" name="edad"/></div>
+        </div>
+        <div class="row body mt-2">
+            <div class="col-md-6 align-self-center">Nueva Localidad</div>
+            <div class="col-md-6 align-self-center"><input type="text" name="localidad"/></div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-6">
+                &nbsp;
+            </div>
+            <div class="col-md-6 align-self-center">
+                <input class="btn btn-primary" type="submit" value="Aceptar">
+            </div>
+        </div>
     </form>
-
     <%
-        //                                v---- RECOGER MENSAJE DE ERROR DEL ÁMBITO request
+        //                                                 v---- RECOGER MENSAJE DE ERROR DEL ÁMBITO request
         String error = (String) request.getAttribute("error");
-    //           v---- SI ESTÁ PRESENTE INFORMAR DEL ERROR
+//            v---- SI ESTÁ PRESENTE INFORMAR DEL ERROR
         if (error != null) {
     %>
-    <div style="color: red"><%=error%></div>
+    <div class="row mt-2">
+        <div class="col-6">
+            <div class="alert alert-danger alert-dismissible fade show">
+                <strong>Error!</strong> <%=error%>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    </div>
     <%
         }
     %>
+</div>
+<script src="js/bootstrap.bundle.js" ></script>
 </body>
 </html>

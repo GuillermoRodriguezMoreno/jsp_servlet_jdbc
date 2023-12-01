@@ -10,9 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="739e422a-ce2f-4c56-a118-8ca65f865cf4" name="Changes" comment="Más dinamismos jquery">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/EditaSociosServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/BorrarSociosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesvdm/jsp_servlet_jdbc/servlet/BorrarSociosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listadoSociosB.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listadoSociosB.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/formularioEditarSocio.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/formularioEditarSocio.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +193,7 @@
       <workItem from="1701184849792" duration="4325000" />
       <workItem from="1701337562558" duration="5501000" />
       <workItem from="1701415449067" duration="2635000" />
-      <workItem from="1701422384147" duration="2202000" />
+      <workItem from="1701422384147" duration="6758000" />
     </task>
     <task id="LOCAL-00001" summary="Commit inicial">
       <option name="closed" value="true" />
@@ -339,7 +339,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701422114417</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Más dinamismos jquery">
+      <option name="closed" value="true" />
+      <created>1701424605586</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1701424605586</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
