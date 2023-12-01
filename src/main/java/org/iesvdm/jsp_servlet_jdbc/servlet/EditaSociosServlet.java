@@ -57,11 +57,7 @@ public class EditaSociosServlet extends HttpServlet {
                 // inserto datos en request
                 Socio socio = socioOptional.get();
 
-                request.setAttribute("socioID", socio.getSocioId());
-                request.setAttribute("socioNombre", socio.getNombre());
-                request.setAttribute("socioEdad", socio.getEdad());
-                request.setAttribute("socioEstatura", socio.getEstatura());
-                request.setAttribute("socioLocalidad", socio.getLocalidad());
+                request.setAttribute("socio", socio);
 
             } else{
 
@@ -102,7 +98,7 @@ public class EditaSociosServlet extends HttpServlet {
         // SI OK ==> OPTIONAL CON SOCIO                 |
         // SI FAIL ==> EMPTY OPTIONAL                   |
         //                                              V
-        Optional<Socio> optionalSocio = UtilServlet.validaGrabar(request);
+        Optional<Socio> optionalSocio = UtilServlet.validaEditar(request);
 
         //SI OPTIONAL CON SOCIO PRESENTE <--> VALIDA OK
         if (optionalSocio.isPresent()) {
@@ -111,8 +107,7 @@ public class EditaSociosServlet extends HttpServlet {
             Socio socio = optionalSocio.get();
 
             //PERSITO EL SOCIO NUEVO EN BBDD
-            this.socioDAO.create(socio);
-
+            this.socioDAO.update(socio);
             //CARGO TODO EL LISTADO DE SOCIOS DE BBDD CON EL NUEVO
             List<Socio> listado = this.socioDAO.getAll();
 
@@ -127,30 +122,29 @@ public class EditaSociosServlet extends HttpServlet {
 
             //ESTABLEZCO EL ATRIBUTO DE newSocioID EN EL ÁMBITO DE REQUEST
             //PARA LANZAR UN MODAL Y UN EFECTO SCROLL EN LA VISTA JSP
-            request.setAttribute("newSocioID", socio.getSocioId() );
+            request.setAttribute("updatedSocioID", socio.getSocioId() );
 
             //POR ÚLTIMO, REDIRECCIÓN INTERNA PARA LA URL /GrabarSocioServlet A pideNumeroSocio.jsp
             //                                                                      |
             //                                                                      V
             dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/listadoSociosB.jsp");
+            dispatcher.forward(request,response);
+
         } else {
 
-            //El OPTIONAL ESTÁ VACÍO (EMPTY)
-            //PREPARO MENSAJE DE ERROR EN EL ÁMBITO DEL REQUEST PARA LA VISTA JSP
-            //                                |
-            //                                V
-            request.setAttribute("error", "Error de validación!");
 
-            //POR ÚLTIMO, REDIRECCIÓN INTERNA PARA LA URL /GrabarSocioServlet A formularioSocio.jsp
-            //                                                                      |
-            //                                                                      V
-            dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioSocioB.jsp");
+            //los errores ya estan settados en el metodo de valida()
+
+            // Cuando haya un error
+            // En vez de un dispatcher se me ha ocurrido llamar al metodo doGet() ya que al fin y al cabo hace un GET del formulario
+            // Asi mantiene los datos de socio en el request y puedo seguir accediondo a los getters de socio en vez de un optional vacio
+            // No se si estara bien o mal, pero creo que funciona
+            this.doGet(request, response);
         }
-
 
         //SIEMPRE PARA HACER EFECTIVA UNA REDIRECCIÓN INTERNA DEL SERVIDOR
         //TENEMOS QUE HACER FORWARD CON LOS OBJETOS request Y response
-        dispatcher.forward(request,response);
+
 
     }
 }
