@@ -46,10 +46,12 @@ public class BorrarSociosServlet extends HttpServlet {
         } catch (Exception e) {
 
             e.printStackTrace();
+            valida = false;
         }
 
         if (!valida) {
 
+            request.setAttribute("error", "Error de validación!");
             dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/listadoSociosB.jsp.jsp");
 
         } else{
@@ -91,12 +93,12 @@ public class BorrarSociosServlet extends HttpServlet {
                 //PREPARO MENSAJE DE ERROR EN EL ÁMBITO DEL REQUEST PARA LA VISTA JSP
                 //                                |
                 //                                V
-                request.setAttribute("error", "Error de validación!");
+                request.setAttribute("error", "Error, socio no encontrado!");
 
                 //POR ÚLTIMO, REDIRECCIÓN INTERNA PARA LA URL /GrabarSocioServlet A formularioSocio.jsp
                 //                                                                      |
                 //                                                                      V
-                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioSocioB.jsp");
+                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/listadoSocioB.jsp");
             }
 
 

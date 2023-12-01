@@ -132,6 +132,7 @@
     });
 </script>
 <% }
+    // Mostrar id socio borrado si existe
     Integer deletedSocioID = (Integer) request.getAttribute("deletedSocioID");
     if (deletedSocioID != null) {
 %>
