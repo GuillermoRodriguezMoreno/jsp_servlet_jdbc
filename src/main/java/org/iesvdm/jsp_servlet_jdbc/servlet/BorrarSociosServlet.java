@@ -50,7 +50,7 @@ public class BorrarSociosServlet extends HttpServlet {
 
         if (!valida) {
 
-            dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/listadoSociosB.jsp.jsp");
 
         } else{
 
@@ -62,8 +62,8 @@ public class BorrarSociosServlet extends HttpServlet {
                 //ACCEDO AL VALOR DE OPTIONAL DE SOCIO
                 Socio socio = optionalSocio.get();
 
-                //PERSITO EL SOCIO NUEVO EN BBDD
-                this.socioDAO.create(socio);
+                //borro EL SOCIO EN BBDD
+                this.socioDAO.delete(socio.getSocioId());
 
                 //CARGO TODO EL LISTADO DE SOCIOS DE BBDD CON EL NUEVO
                 List<Socio> listado = this.socioDAO.getAll();
@@ -79,7 +79,7 @@ public class BorrarSociosServlet extends HttpServlet {
 
                 //ESTABLEZCO EL ATRIBUTO DE newSocioID EN EL ÁMBITO DE REQUEST
                 //PARA LANZAR UN MODAL Y UN EFECTO SCROLL EN LA VISTA JSP
-                request.setAttribute("newSocioID", socio.getSocioId());
+                request.setAttribute("deletedSocioID", socio.getSocioId());
 
                 //POR ÚLTIMO, REDIRECCIÓN INTERNA PARA LA URL /GrabarSocioServlet A pideNumeroSocio.jsp
                 //                                                                      |

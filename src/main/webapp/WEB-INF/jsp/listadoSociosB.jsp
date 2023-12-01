@@ -131,7 +131,17 @@
         });
     });
 </script>
-<% } %>
+<% }
+    Integer deletedSocioID = (Integer) request.getAttribute("deletedSocioID");
+    if (deletedSocioID != null) {
+%>
+        <script type="text/javascript">
+            setTimeout(() =>alert("Socio con id " + <%=deletedSocioID%> + " borrado"), 200);
+        </script>
+
+<%
+        }
+    %>
 <script type="text/javascript" src="js/bootstrap.bundle.js" ></script>
 </body>
 </html>
