@@ -142,6 +142,17 @@
 
 <%
         }
+
+    // Mostrar id del socio actualizdo si existe
+    Integer updatedSocioID = (Integer) request.getAttribute("updatedSocioID");
+    if (updatedSocioID != null) {
+%>
+<script type="text/javascript">
+    setTimeout(() =>alert("Socio con id " + <%=updatedSocioID%> + " actualizado"), 200);
+</script>
+
+<%
+    }
     %>
 <script type="text/javascript" src="js/bootstrap.bundle.js" ></script>
 </body>
