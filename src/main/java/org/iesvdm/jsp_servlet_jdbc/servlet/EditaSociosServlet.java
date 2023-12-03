@@ -26,7 +26,7 @@ public class EditaSociosServlet extends HttpServlet {
     //FRENTE A API REST UTLIZANDO CÓDIGO DE CLIENTE JS HTTP: GET, POST, PUT, DELETE, PATCH
 
     //MÉTODO PARA RUTAS GET /EditarSociosServlet
-    //PARA LA RUTA /EditarSociosServlet VA A MOSTRAR LA JSP DE formularioEditarSocio.jsp
+    //PARA LA RUTA /EditarSociosServlet VA A MOSTRAR LA JSP DE formularioSocioB
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -71,11 +71,13 @@ public class EditaSociosServlet extends HttpServlet {
             request.setAttribute("error", error);
         }
 
+        request.setAttribute("actualizar", true);
+
         //SE TRATA DE UNA REDIRECCIÓN INTERNA EN EL SERVIDOR
         //FIJÉMONOS QUE LA RUTA DE LA JSP HA CAMBIADO A DENTRO DE /WEB-INF/
         //POR LO TANTO NO ES ACCESIBLE DIRECTAMENTE, SÓLO A TRAVÉS DE SERVLET
         //MEDIANTE UN RequestDispatcher ----------------v
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioEditarSocio.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/formularioSocioB.jsp");
 
         //SIEMPRE QUE HACEMOS UN RequestDispatcher DEBE MATERIALIZARSE EN UN forward
         //             --------------------------------------------------------|
